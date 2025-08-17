@@ -1,16 +1,6 @@
 name: Build ZMK firmware
-on:
-  push:
-    branches: [main, master]
-  pull_request:
-    types: [opened, synchronize, reopened]
-  workflow_dispatch:
+on: [push, pull_request, workflow_dispatch]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Build and upload firmware
-        uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
